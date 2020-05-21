@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :user_projects_index]
 
   # GET /users
   def index
@@ -12,6 +12,20 @@ class UsersController < ApplicationController
   def show
     render json: @user
   end
+
+  # GET /users/1/team
+  def user_team_index
+    @users = User.where(team:"Engineering")
+
+    render json: @users, include: :projects
+  end
+
+  # GET /users/1/projects
+    def user_projects_index
+      @project = Project.all
+      @user.projects 
+      render json: @users, include: :projects
+    end
 
   # POST /users
   def create

@@ -4110,3 +4110,110 @@ Migrating to CreateJoinTableUserProject (20200521055027)
   [1m[36mUpdate Create (0.2ms)[0m  [1m[32mINSERT INTO "updates" ("user_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 7], ["content", "Just wrapping up the latest round of Usability Testing."], ["created_at", "2020-05-21 21:49:46.499369"], ["updated_at", "2020-05-21 21:49:46.499369"]]
   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "updates"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."team" = $1 LIMIT $2[0m  [["team", "Engineering"], ["LIMIT", 11]]
+Started GET "/" for ::1 at 2020-05-21 19:07:53 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/macbook/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/macbook/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.8ms | Allocations: 482)
+Completed 200 OK in 32ms (Views: 22.4ms | ActiveRecord: 0.0ms | Allocations: 2713)
+
+
+Started GET "/" for ::1 at 2020-05-21 19:09:06 -0400
+Processing by Rails::WelcomeController#index as */*
+  Rendering /Users/macbook/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/macbook/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.3ms | Allocations: 190)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.0ms | Allocations: 796)
+
+
+Started GET "/users/1" for ::1 at 2020-05-21 19:09:22 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:58:in `set_user'
+Completed 200 OK in 71ms (Views: 2.4ms | ActiveRecord: 6.3ms | Allocations: 17719)
+
+
+Started GET "/users/1/projects" for ::1 at 2020-05-21 19:09:55 -0400
+Processing by UsersController#user_projects_index as */*
+  Parameters: {"id"=>"1"}
+Completed 404 Not Found in 2ms (ActiveRecord: 0.0ms | Allocations: 158)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:25:in `user_projects_index'
+Started GET "/users/1/projects" for ::1 at 2020-05-21 19:15:26 -0400
+Processing by UsersController#user_projects_index as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:58:in `set_user'
+Completed 404 Not Found in 46ms (ActiveRecord: 6.9ms | Allocations: 17435)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Project without an ID):
+  
+app/controllers/users_controller.rb:25:in `user_projects_index'
+Started GET "/users/1/team" for ::1 at 2020-05-21 19:17:26 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/team"):
+  
+actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/1/team" for ::1 at 2020-05-21 19:18:39 -0400
+Processing by UsersController#user_team_index as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."team" = $1[0m  [["team", "Engineering"]]
+  ↳ app/controllers/users_controller.rb:20:in `user_team_index'
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "projects_users" ON "projects"."id" = "projects_users"."project_id" WHERE "projects_users"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/users_controller.rb:20:in `user_team_index'
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "projects_users" ON "projects"."id" = "projects_users"."project_id" WHERE "projects_users"."user_id" = $1[0m  [["user_id", 10]]
+  ↳ app/controllers/users_controller.rb:20:in `user_team_index'
+Completed 200 OK in 63ms (Views: 49.9ms | ActiveRecord: 8.2ms | Allocations: 26968)
+
+
+Started GET "/users/1" for ::1 at 2020-05-21 19:20:05 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:58:in `set_user'
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 1119)
+
+
+Started GET "/users/7/team" for ::1 at 2020-05-21 19:21:57 -0400
+Processing by UsersController#user_team_index as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."team" = $1[0m  [["team", "Engineering"]]
+  ↳ app/controllers/users_controller.rb:20:in `user_team_index'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "projects_users" ON "projects"."id" = "projects_users"."project_id" WHERE "projects_users"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/controllers/users_controller.rb:20:in `user_team_index'
+  [1m[36mProject Load (5.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "projects_users" ON "projects"."id" = "projects_users"."project_id" WHERE "projects_users"."user_id" = $1[0m  [["user_id", 10]]
+  ↳ app/controllers/users_controller.rb:20:in `user_team_index'
+Completed 200 OK in 18ms (Views: 9.9ms | ActiveRecord: 7.7ms | Allocations: 4150)
+
+
