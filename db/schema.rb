@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_055027) do
     t.string "top_skills"
     t.string "gender"
     t.string "pronouns"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

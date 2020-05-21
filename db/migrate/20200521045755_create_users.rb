@@ -15,7 +15,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :top_skills
       t.string :gender
       t.string :pronouns
-
+      t.string :status
       t.timestamps
     end
   end
