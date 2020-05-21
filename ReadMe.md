@@ -6,19 +6,19 @@
  - PUT /users/:id
  - DELETE /users/:id
 
- ### Announcements Routes:
- - GET user/:user_id/announcements
- - GET user/:user_id/announcements/:id
- - POST user/:user_id/announcements
- - PUT user/:user_id/announcements/:id
- - DELETE user/:user_id/announcements/:id
+ ### Team Updates Routes:
+ - GET user/:user_id/updates
+ - GET user/:user_id/updates/:id
+ - POST user/:user_id/updates
+ - PUT user/:user_id/updates/:id
+ - DELETE user/:user_id/updates/:id
 
  ### Comments Routes:
- - GET user/:user_id/announcements/:id/comments
- - GET user/:user_id/announcements/:id/comments/:id
- - POST user/:user_id/announcements/:id/comments
- - PUT user/:user_id/announcements/:id/comments/:id
- - DELETE user/:user_id/announcements/:id/comments/:id
+ - GET user/:user_id/updates/:id/comments
+ - GET user/:user_id/updates/:id/comments/:id
+ - POST user/:user_id/updates/:id/comments
+ - PUT user/:user_id/updates/:id/comments/:id
+ - DELETE user/:user_id/updates/:id/comments/:id
 
  ### Likes Routes:
  - GET user/:user_id/posts/:post_id/hates
