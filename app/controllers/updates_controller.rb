@@ -5,7 +5,7 @@ class UpdatesController < ApplicationController
   def index
     @updates = Update.all
 
-    render json: @updates
+    render json: @updates, include: :user
   end
 
   # GET /updates/1

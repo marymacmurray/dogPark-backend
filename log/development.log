@@ -4217,3 +4217,72 @@ Processing by UsersController#user_team_index as */*
 Completed 200 OK in 18ms (Views: 9.9ms | ActiveRecord: 7.7ms | Allocations: 4150)
 
 
+Started GET "/users/7" for ::1 at 2020-05-21 20:25:28 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (7.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:58:in `set_user'
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 7.2ms | Allocations: 1089)
+
+
+Started GET "/updates" for ::1 at 2020-05-21 21:15:31 -0400
+  
+SyntaxError (/Users/macbook/dogPark-backend/dogPark-backend/app/controllers/updates_controller.rb:8: syntax error, unexpected tIDENTIFIER, expecting end
+...  render json: @updates include: :users
+...                        ^~~~~~~):
+  
+app/controllers/updates_controller.rb:8: syntax error, unexpected tIDENTIFIER, expecting end
+app/controllers/updates_controller.rb:8: syntax error, unexpected tIDENTIFIER, expecting end
+Started GET "/updates" for ::1 at 2020-05-21 21:16:03 -0400
+Processing by UpdatesController#index as HTML
+  [1m[36mUpdate Load (13.5ms)[0m  [1m[34mSELECT "updates".* FROM "updates"[0m
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+Completed 500 Internal Server Error in 154ms (ActiveRecord: 85.1ms | Allocations: 7447)
+
+
+  
+NoMethodError (undefined method `users' for #<Update:0x00007fa472ddbe40>
+Did you mean?  user
+               user=):
+  
+app/controllers/updates_controller.rb:8:in `index'
+Started GET "/updates" for ::1 at 2020-05-21 21:17:36 -0400
+Processing by UpdatesController#index as HTML
+  [1m[36mUpdate Load (0.4ms)[0m  [1m[34mSELECT "updates".* FROM "updates"[0m
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 3.1ms | Allocations: 7097)
+
+
+  
+NoMethodError (undefined method `users' for #<Update:0x00007fa473983360>
+Did you mean?  user
+               user=):
+  
+app/controllers/updates_controller.rb:8:in `index'
+Started GET "/updates" for ::1 at 2020-05-21 21:19:51 -0400
+Processing by UpdatesController#index as HTML
+  [1m[36mUpdate Load (0.3ms)[0m  [1m[34mSELECT "updates".* FROM "updates"[0m
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/updates_controller.rb:8:in `index'
+Completed 200 OK in 124ms (Views: 104.4ms | ActiveRecord: 16.2ms | Allocations: 33494)
+
+
