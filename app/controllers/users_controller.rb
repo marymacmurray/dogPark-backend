@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy, :user_projects_index]
+  before_action :set_user, only: [:show, :update, :destroy, :user_team_index, :user_projects_index, :user_teammates]
 
   # GET /users
   def index
@@ -13,9 +13,10 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+
   # GET /users/1/team
   def user_team_index
-    @users = User.where(team:"Engineering")
+    @users = User.where(team:@user.team)
 
     render json: @users, include: :projects
   end
@@ -30,9 +31,10 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
+    
     if @user.save
-      render json: @user, status: :created, location: @user
+      @token = encode({user_id: @user.id});
+      render json: { user: @user.frontend_data, token: @token }, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -53,7 +55,7 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Using a callback to share common setup between actions.
     def set_user
       @user = User.find(params[:id])
     end
